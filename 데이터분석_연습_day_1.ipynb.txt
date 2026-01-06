@@ -1,0 +1,351 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "네, 반갑습니다! 오늘부터 제가 당신의 1:1 코딩 PT 선생님입니다. 🏋️‍♂️\n",
+        "오늘 Day 1은 아주 가볍게 몸을 푸는 단계입니다. 하지만 데이터 분석에서 가장 많이 쓰는 근육(기초 문법)을 단련할 거예요.\n",
+        "우리는 복잡한 파이썬 문법(for문, 클래스 등) 다 건너뛰고, **\"데이터 분석에 당장 필요한 판다스(Pandas) 기초\"**만 팝니다.\n",
+        "준비되셨나요? 구글 코랩(Colab)을 켜시고, 하나씩 따라오세요.\n",
+        "📅 Day 1: 데이터라는 '표'를 내 맘대로 주무르기\n",
+        "오늘 배울 핵심 동작은 딱 3가지입니다.\n",
+        "만들기: 엑셀 같은 표(DataFrame) 만들기\n",
+        "구경하기: 데이터의 일부분만 쏙 뽑아 보기\n",
+        "선택하기: 원하는 열(Column)만 집어내기\n",
+        "1교시. 데이터 그릇 만들기 (DataFrame)\n",
+        "데이터 분석의 99%는 pandas(판다스)라는 도구를 씁니다. 판다스는 데이터를 **'DataFrame(데이터프레임)'**이라는 표 형태로 다룹니다. 그냥 **\"파이썬 엑셀\"**이라고 생각하세요.\n",
+        "[개념 익히기]\n",
+        "import pandas as pd: 판다스 도구를 가져와서 앞으로는 pd라고 부르겠다는 뜻.\n",
+        "pd.DataFrame(데이터): 데이터를 표(DataFrame)로 만들어라.\n",
+        "[👨‍🏫 선생님의 시범]\n",
+        "먼저 제가 가상의 '카페 메뉴판' 데이터를 만들어볼게요. 코드를 실행해보세요.\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "import pandas as pd\n",
+        "\n",
+        "# 1. 딕셔너리(Dictionary) 형태로 재료 준비\n",
+        "data = {\n",
+        "    '메뉴': ['아메리카노', '라떼', '카페모카', '에스프레소', '아이스티'],\n",
+        "    '가격': [4000, 4500, 5000, 3500, 4000],\n",
+        "    '판매량': [50, 30, 15, 5, 20]\n",
+        "}\n",
+        "\n",
+        "# 2. DataFrame(표)으로 변환해서 'df'라는 박스에 담기\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "# 3. 출력\n",
+        "print(df)\n",
+        "\n",
+        "\n",
+        "✍️ [Day 1 - 미션 1]\n",
+        "문제: 위 코드를 참고해서, 이번엔 '과일 가게' 데이터를 만들어보세요.\n",
+        "변수 이름: df_fruit\n",
+        "데이터 내용:\n",
+        "과일: 사과, 바나나, 포도\n",
+        "가격: 1000, 2000, 3000\n",
+        "👇 아래 빈칸(___)을 채워 코드를 완성하고 실행하세요.\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "# [퀴즈 1] 빈칸을 채워 과일 가게 데이터를 완성하세요.\n",
+        "data_fruit = {\n",
+        "    '과일': ['사과', '바나나', '포도'],\n",
+        "    '가격': [1000, 2000, 3000]\n",
+        "}\n",
+        "\n",
+        "df_fruit = pd.DataFrame(___)  # 힌트: 위에서 만든 재료 변수 이름을 넣으세요.\n",
+        "print(df_fruit)\n",
+        "\n",
+        "\n",
+        "2교시. 위아래로 훑어보기 (Head & Tail)\n",
+        "데이터가 100만 줄이라면 print(df) 했다가는 컴퓨터가 멈춥니다.\n",
+        "이때 상위 5개, 하위 5개만 살짝 간을 보는 기능입니다.\n",
+        "[개념 익히기]\n",
+        "df.head(n): 위에서부터 n개 보여줘. (숫자 안 쓰면 기본 5개)\n",
+        "df.tail(n): 밑에서부터 n개 보여줘.\n",
+        "[👨‍🏫 선생님의 시범]\n",
+        "아까 만든 카페 데이터(df)에서 상위 2개만 보겠습니다.\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "print(df.head(2))\n",
+        "\n",
+        "\n",
+        "✍️ [Day 1 - 미션 2]\n",
+        "문제: 아까 만든 카페 데이터 df에서, 이번엔 **\"가장 안 팔리는(리스트의 맨 밑에 있는) 메뉴 2개\"**를 확인해보세요.\n",
+        "👇 아래 빈칸(___)을 채워 코드를 완성하세요.\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "# [퀴즈 2] 뒤에서부터 2개의 데이터를 출력하세요.\n",
+        "print(df.tail(___))\n",
+        "\n",
+        "\n",
+        "3교시. 원하는 열(Column)만 쏙 뽑기\n",
+        "분석할 때 모든 정보가 필요하진 않죠? \"가격만 보고 싶어\" 혹은 \"메뉴 이름만 보고 싶어\" 할 때 씁니다. **대괄호 []**를 사용합니다.\n",
+        "[개념 익히기]\n",
+        "df['컬럼이름']: 해당 컬럼(열) 한 줄을 쫙 뽑아옵니다.\n",
+        "[👨‍🏫 선생님의 시범]\n",
+        "카페 메뉴들의 **'가격'**만 뽑아보겠습니다.\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "print(df['가격'])\n",
+        "\n",
+        "\n",
+        "✍️ [Day 1 - 미션 3]\n",
+        "문제: 카페 사장님이 \"오늘 무슨 메뉴가 팔렸는지 메뉴 이름만 리스트로 뽑아와!\"라고 시켰습니다.\n",
+        "👇 아래 빈칸(___)을 채워 코드를 완성하세요.\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "# [퀴즈 3] '메뉴' 열(Column)만 선택해서 출력하세요.\n",
+        "menu_list = df['___']\n",
+        "print(menu_list)\n",
+        "\n",
+        "\n",
+        "🎁 4교시 (보너스). 기초 통계 내보기\n",
+        "뽑아낸 데이터로 계산을 할 수 있어야 분석이죠?\n",
+        "[개념 익히기]\n",
+        ".mean(): 평균\n",
+        ".sum(): 합계\n",
+        ".max(): 최대값\n",
+        "[👨‍🏫 선생님의 시범]\n",
+        "카페 메뉴 가격의 평균은 얼마일까요?\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "print(df['가격'].mean())\n",
+        "\n",
+        "\n",
+        "✍️ [Day 1 - 파이널 미션]\n",
+        "문제: 오늘 하루 동안 팔린 **'총 판매량(판매량의 합계)'**은 몇 잔일까요?\n",
+        "👇 코드를 직접 짜보세요!\n",
+        "(힌트: df에서 ['판매량']을 뽑고, 그 뒤에 합계를 구하는 점(.) 명령어를 붙이세요.)\n",
+        "\n",
+        "Python\n",
+        "\n",
+        "\n",
+        "# [퀴즈 4] 판매량의 총 합계(sum)를 구해서 출력하세요.\n",
+        "total_sales = df['___'].___()\n",
+        "print(\"총 판매량:\", total_sales)\n",
+        "\n",
+        "\n",
+        "💯 Day 1 수업 끝!\n",
+        "고생하셨습니다! 오늘 배운 것만 정리해볼까요?\n",
+        "pd.DataFrame(): 표 만들기\n",
+        ".head() / .tail(): 위아래 훑어보기\n",
+        "df['이름']: 특정 열만 뽑기\n",
+        ".sum() / .mean(): 더하고 평균 내기\n",
+        "이 4가지만 알면 내일 여자친구분과 함께 데이터를 불러와서, 내용을 확인하고, 매출 평균을 구하는 것까지 가능합니다.\n",
+        "퀴즈 정답을 확인하고 싶거나, 에러가 나면 저에게 바로 물어보세요! (다 풀었다면 \"2일차 수업 줘!\"라고 외쳐주세요 ㅎㅎ)\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "XUEKrr3P-nCB"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "-0VSLkVevRpT"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = {\n",
+        "    'sort' : ['apple', 'banana', 'grape'],\n",
+        "    'price' : [1000, 2000, 3000]\n",
+        "}"
+      ],
+      "metadata": {
+        "id": "XAhyMWbf9gPl"
+      },
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#문제 1\n",
+        "df_Fruit = pd.DataFrame(data)"
+      ],
+      "metadata": {
+        "id": "qqQG3DBgyXTi"
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#문제 1-1\n",
+        "print(df_Fruit)\n"
+      ],
+      "metadata": {
+        "id": "ON6T0tKvyvhv",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "35a65c3c-b472-49a1-a5af-25094ac76561"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "     sort  price\n",
+            "0   apple   1000\n",
+            "1  banana   2000\n",
+            "2   grape   3000\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "데이터가 100만 줄이라면 print(df) 했다가는 컴퓨터가 멈춥니다.\n",
+        "\n",
+        "\n",
+        "이때 상위 5개, 하위 5개만 살짝 간을 보는 기능입니다.\n",
+        "\n",
+        "\n",
+        "_**[개념 익히기]**_\n",
+        "- `df.head(n)` : 위에서부터 n개 보여줘. (숫자 안 쓰면 기본 5개)\n",
+        "- `df.tail(n)` : 밑에서부터 n개 보여줘.\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "##**[퀴즈2]**\n",
+        ">**아까 만든 카페 데이터 df에서, 이번엔 \"가장 안 팔리는(리스트의 맨 밑에 있는) 메뉴 2개\" 를 확인해보세요.**\n",
+        "\n",
+        "\n",
+        "```\n",
+        "#뒤에서부터 2개의 데이터를 출력하세요.\n",
+        "print(df.tail(___))\n",
+        "```\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "NCtVsc0TA6QO"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#문제 2\n",
+        "print(df_Fruit.tail(2))\n",
+        "\n",
+        "print('-'*30)\n",
+        "\n",
+        "price_list = df_Fruit['price']\n",
+        "\n",
+        "print(price_list)\n",
+        "print(df_Fruit['price'])\n",
+        "print('-'*30)\n"
+      ],
+      "metadata": {
+        "id": "cdK7LGH6yzGm",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "1d6cc543-5a15-4577-fa0f-f6a20c054b97"
+      },
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "     sort  price\n",
+            "1  banana   2000\n",
+            "2   grape   3000\n",
+            "------------------------------\n",
+            "0    1000\n",
+            "1    2000\n",
+            "2    3000\n",
+            "Name: price, dtype: int64\n",
+            "0    1000\n",
+            "1    2000\n",
+            "2    3000\n",
+            "Name: price, dtype: int64\n",
+            "------------------------------\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#문제 3\n",
+        "print(df_Fruit['price'].mean())\n",
+        "print(df_Fruit['price'].max())\n",
+        "print(df_Fruit['price'].sum())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Smz1W1uRBKwb",
+        "outputId": "54070cfe-3013-45d1-9d0a-a1298686f0ec"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "2000.0\n",
+            "3000\n",
+            "6000\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "aOAQBtLwCuGL"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
